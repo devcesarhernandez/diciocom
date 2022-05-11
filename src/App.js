@@ -1,6 +1,11 @@
+import RegisterForm from "./Pages/Forms/Register"
+import Form from "./Pages/Layouts/Form"
+
 function App() {
 	return (
-		<h1>Hello, world!</h1>
+		<Form>
+			<RegisterForm />
+		</Form>
 	)
 }
 
