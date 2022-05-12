@@ -1,31 +1,16 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Table, Button } from "react-bootstrap"
 import Pagination from "../../Components/Pagination"
-
-const data = [
-	{
-		id: 1,
-		nombre: "Cesar",
-		apellidoPaterno: "Hernandez",
-		apellidoMaterno: "Bautista",
-		email: "devcesar@gmail.com",
-		edad: 29,
-		fechaNac: "1992-07-26",
-		datos: {
-			calle: "Enrique",
-			numero: 28,
-			colonia: "Ejto Const",
-			municipio: "Iztapalapa",
-			estado: "Ciudad de México",
-			cp: "09570"
-		}
-	}
-]
+import allUsers from "../../Infrastructure/repositories/allUsers"
 
 const Users = () => {
 	const rows = 10
-	const [users, setUsers] = useState(data)
+	const [users, setUsers] = useState([])
 	const [page, setPage] = useState(1)
+
+	useEffect( () =>  {
+		allUsers().then( res => setUsers(res))
+	}, [])
 
 	const trUsers = []
 	for (let i = rows * page - rows; i < rows * page; i++) {
