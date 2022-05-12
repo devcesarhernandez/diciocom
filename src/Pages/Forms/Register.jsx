@@ -2,18 +2,20 @@ import { Form, Button, Row, Col } from "react-bootstrap"
 import {useState} from "react"
 import Personal from "../../Components/Register/PersonalDetails"
 import Address from "../../Components/Register/AddressDetails"
+import createUser from "../../Infrastructure/repositories/createUser"
 
 const Register = () => {
 	const [data, setData] = useState({datos:{}})
 	const [step, setStep] = useState(0)
 	const [validated, setValidated] = useState(false)
-	const submitForm = (e) => {
+	const submitForm = async (e) => {
 		e.preventDefault()
 		const form = e.currentTarget
 		if ( form.checkValidity() === false){
 			e.stopPropagation()
 		} else {
-			alert("form completo")	
+			const res = await createUser({datos: data})
+			console.log(res)
 		}
 		setValidated(true)
 	}

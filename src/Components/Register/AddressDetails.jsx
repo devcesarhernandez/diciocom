@@ -27,7 +27,7 @@ const AddressDetails = (props) => {
 			</Form.Group>
 			<Form.Group className="mb-3">
 				<Form.Label htmlFor="estado">Estado</Form.Label>
-				<Form.Control required id="estado" name="estado" onChange={handleData} value={values.estado} />
+				<Form.Control required id="estado" name="estado" onChange={handleData} value={values.estado || ""} />
 				<Form.Control.Feedback type="invalid">Porfavor ingresa el estado</Form.Control.Feedback>
 			</Form.Group>
 			<Form.Group className="mb-3">
